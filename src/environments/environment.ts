@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  rutaApi: 'http://localhost:3000',
+  apiGobierno: 'https://apis.digital.gob.cl/dpa/regiones'
 };
 
 /*
