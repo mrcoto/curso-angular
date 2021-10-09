@@ -20,11 +20,12 @@
 <div>
     <div class="row">
         <div class='col-6'>
+            <!-- TODO: TAREA 2: Convertir en componente | Hasta el Viernes 15 -->
             <div *ngIf="cargandoAves; else avesCargadas">
                 Cargando Aves...
             </div>
             <ng-template #avesCargadas>
-                <app-detalle-lista-ave *ngFor="let ave of avesFiltradas" [detalle]="ave" (detalleClickeado)="cargarDetalleAve($event)"></app-detalle-lista-ave>
+                <app-detalle-lista-ave *ngFor="let ave of avesFiltradas" [detalle]="ave" (detalleClickeado)="asignarAveClickeada($event)"></app-detalle-lista-ave>
                 <!-- <div class="card mb-1" *ngFor="let ave of avesFiltradas">
                     <img class="card-img-top" [src]="ave.images.main">
                     <div class="card-body">
@@ -33,23 +34,10 @@
                     </div>
                 </div> -->
             </ng-template>
+            <!-- FIN TAREA 2 -->
         </div>
         <div class="col-6">
-            <div *ngIf="cargandoDetalleAve; else detalleAveCargada">
-                Cargando Detalle Ave...
-            </div>
-            <ng-template #detalleAveCargada>
-                <div class="card mb-1" *ngIf="detalleAve">
-                    <img class="card-img-top" [src]="detalleAve.images.main">
-                    <div class="card-body">
-                        <h5 class="card-title">{{detalleAve.name.spanish}}</h5>
-                        <p class="card-text" *ngIf="tieneIucn(detalleAve)"><strong>IUCN: </strong>{{detalleAve.iucn.title}} - {{detalleAve.iucn.description}}</p>
-                        <p class="card-text" *ngIf="detalleAve.size"><strong>Tamaño: </strong>{{detalleAve.size}}</p>
-                        <p class="card-text" *ngIf="detalleAve.habitat"><strong>Habitat: </strong>{{detalleAve.habitat}}.</p>
-                        <p class="card-text" *ngIf="detalleAve.didyouknow"><strong>¿Sabías qué?: </strong>{{detalleAve.didyouknow}}.</p>
-                    </div>
-                </div>
-            </ng-template>
+            <app-carga-detalle-ave #cargaDetalleAve *ngIf="aveClickeada" [ave]="aveClickeada"></app-carga-detalle-ave>
         </div>
     </div>
 </div>

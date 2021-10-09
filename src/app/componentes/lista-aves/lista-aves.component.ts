@@ -1,8 +1,8 @@
-import { DetalleAve } from './data/detalle-ave.interface';
 import { Ave } from './data/lista-ave.interface';
 import { environment } from './../../../environments/environment';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CargaDetalleAveComponent } from '../carga-detalle-ave/carga-detalle-ave.component';
 
 @Component({
   selector: 'app-lista-aves',
@@ -18,8 +18,10 @@ export class ListaAvesComponent implements OnInit {
   aves: Ave[] = [];
   avesFiltradas: Ave[] = [];
 
-  cargandoDetalleAve: boolean = false;
-  detalleAve!: DetalleAve;
+  aveClickeada!: Ave;
+
+  @ViewChild('cargaDetalleAve', { static: false })
+  cargaDetalleAveComponent!: CargaDetalleAveComponent;
 
   constructor(
     private http: HttpClient
@@ -30,8 +32,8 @@ export class ListaAvesComponent implements OnInit {
   }
 
   inputCambiado(event: any) {
+    console.log('event', event);
     this.inputBusqueda = event.target.value;
-    // console.log('event', event);
     console.log('input cambiado', this.inputBusqueda);
   }
 
@@ -41,6 +43,10 @@ export class ListaAvesComponent implements OnInit {
       // chincol: chinc, true | col, true | '', true
       ave => ave.name.spanish.toLowerCase().includes(this.inputBusqueda)
     );
+    // Ejemplo
+    if (this.cargaDetalleAveComponent) {
+      this.cargaDetalleAveComponent.recargar();
+    }
   }
 
   cargarAvesDeApi() {
@@ -52,18 +58,8 @@ export class ListaAvesComponent implements OnInit {
     });
   }
 
-  cargarDetalleAve(ave: Ave) {
-    this.cargandoDetalleAve = true;
-    console.log('ave clickeada', ave);
-    console.log('cargando detalles de la ave');
-    this.http.get<DetalleAve>(this.apiAves + '/' + ave.uid).subscribe(respuesta => {
-      this.detalleAve = respuesta;
-      this.cargandoDetalleAve = false;
-    });
-  }
-
-  tieneIucn(ave: DetalleAve): boolean {
-    return ave.iucn != null && ave.iucn.title != null && ave.iucn.description != null;
+  asignarAveClickeada(ave: Ave) {
+    this.aveClickeada = ave;
   }
 
 }
