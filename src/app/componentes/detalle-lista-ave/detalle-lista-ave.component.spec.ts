@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarruselGatosComponent } from './carrusel-gatos.component';
+import { DetalleListaAveComponent } from './detalle-lista-ave.component';
 
-describe('CarruselGatosComponent', () => {
-  let component: CarruselGatosComponent;
-  let fixture: ComponentFixture<CarruselGatosComponent>;
+describe('DetalleListaAveComponent', () => {
+  let component: DetalleListaAveComponent;
+  let fixture: ComponentFixture<DetalleListaAveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarruselGatosComponent ]
+      declarations: [ DetalleListaAveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarruselGatosComponent);
+    fixture = TestBed.createComponent(DetalleListaAveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

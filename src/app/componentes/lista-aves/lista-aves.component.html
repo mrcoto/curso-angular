@@ -1,0 +1,55 @@
+<div>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Buscar Ave..." aria-describedby="basic-addon2" (input)="inputCambiado($event)">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="buscarAve()">Buscar</button>
+        </div>
+    </div>
+
+    <!-- <div *ngIf="inputBusqueda">Búsqueda: {{inputBusqueda}}</div>
+    <div *ngIf="!inputBusqueda">No se ha escrito en búsqueda.</div> -->
+
+    <div *ngIf="inputBusqueda; else sinInputBusqueda">Búsqueda: {{inputBusqueda}}</div>
+    <ng-template #sinInputBusqueda>
+        <div>No se ha escrito en búsqueda.</div>
+    </ng-template>
+
+</div>
+
+<div>
+    <div class="row">
+        <div class='col-6'>
+            <div *ngIf="cargandoAves; else avesCargadas">
+                Cargando Aves...
+            </div>
+            <ng-template #avesCargadas>
+                <app-detalle-lista-ave *ngFor="let ave of avesFiltradas" [detalle]="ave" (detalleClickeado)="cargarDetalleAve($event)"></app-detalle-lista-ave>
+                <!-- <div class="card mb-1" *ngFor="let ave of avesFiltradas">
+                    <img class="card-img-top" [src]="ave.images.main">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ave.name.spanish}}</h5>
+                        <a href="#" class="btn btn-primary">Detalle</a>
+                    </div>
+                </div> -->
+            </ng-template>
+        </div>
+        <div class="col-6">
+            <div *ngIf="cargandoDetalleAve; else detalleAveCargada">
+                Cargando Detalle Ave...
+            </div>
+            <ng-template #detalleAveCargada>
+                <div class="card mb-1" *ngIf="detalleAve">
+                    <img class="card-img-top" [src]="detalleAve.images.main">
+                    <div class="card-body">
+                        <h5 class="card-title">{{detalleAve.name.spanish}}</h5>
+                        <p class="card-text" *ngIf="tieneIucn(detalleAve)"><strong>IUCN: </strong>{{detalleAve.iucn.title}} - {{detalleAve.iucn.description}}</p>
+                        <p class="card-text" *ngIf="detalleAve.size"><strong>Tamaño: </strong>{{detalleAve.size}}</p>
+                        <p class="card-text" *ngIf="detalleAve.habitat"><strong>Habitat: </strong>{{detalleAve.habitat}}.</p>
+                        <p class="card-text" *ngIf="detalleAve.didyouknow"><strong>¿Sabías qué?: </strong>{{detalleAve.didyouknow}}.</p>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
