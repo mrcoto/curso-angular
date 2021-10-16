@@ -36,6 +36,7 @@
                     <th scope="col">Título</th>
                     <th scope="col">Categoría</th>
                     <th scope="col">Precio</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,8 +50,29 @@
                     <td>{{producto.title}}</td>
                     <td>{{producto.category}}</td>
                     <td>${{producto.price}}</td>
+                    <td>
+                        <!-- TODO: TAREA 3 -->
+                        <!-- Plazo: Lunes 25 de Octubre hasta las 20:00 -->
+                        <!-- El componente editar producto debe estar contenido en un módulo que se llame editar-producto.module.ts (módulo propio) -->
+                        <!-- Abrir un modal similar al de crear producto, para editar ese producto -->
+                        <!-- Se debe poder editar: -->
+                        <!-- El título -->
+                        <!-- La descripción -->
+                        <!-- La Categoría -->
+                        <!-- La Imagen -->
+                        <!-- El precio -->
+                        <!-- El rating count -->
+                        <!-- El rating rate | select de 1 - 5, (1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5 y 5)-->
+                        <!-- --- Al abrir un producto, por ejemplo "Mens Casual Slim Fit", 
+                            en el input del titulo debiese aparecer "Mens Casual Slim Fit", y así con los otros inputs -->
+                        <button type="button" class="btn btn-success mx-2">
+                            Editar
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </ng-template>
+
+<app-lista-categorias></app-lista-categorias>

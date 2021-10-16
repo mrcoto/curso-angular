@@ -1,3 +1,4 @@
+import { CategoriasModule } from './../categorias/categorias.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListaProductosComponent } from './componentes/lista-productos/lista-productos.component';
@@ -19,8 +20,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     // Para usar los formularios
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     // Fin para usar los formularios
+    CategoriasModule,
   ],
   exports: [
     DetalleProductoComponent,
