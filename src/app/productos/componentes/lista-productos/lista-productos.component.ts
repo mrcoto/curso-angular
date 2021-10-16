@@ -2,6 +2,7 @@ import { Producto } from './../../../modelos/producto.interface';
 import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-lista-productos',
@@ -14,7 +15,8 @@ export class ListaProductosComponent implements OnInit {
   productos: Producto[] = [];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,15 @@ export class ListaProductosComponent implements OnInit {
       console.log(response);
       this.productos = response;
       this.loading = false;
+    });
+  }
+
+  abrirModal(content: any) {
+    this.modalService.open(content).result.then((result) => {
+      console.log('result', result);
+    }, (reason) => {
+      console.log('reason', reason);
+      this.cargarProductos();
     });
   }
 

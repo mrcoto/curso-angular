@@ -3,6 +3,7 @@ import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-crear-producto',
@@ -23,7 +24,8 @@ export class CrearProductoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private activeModal: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +75,7 @@ export class CrearProductoComponent implements OnInit {
         this.form.enable();
         this.form.reset();
         this.productoCreado.emit(response);
+        this.activeModal.dismissAll(response);
     });
     console.log(this.form);
   }

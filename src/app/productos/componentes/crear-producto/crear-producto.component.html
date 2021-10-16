@@ -42,7 +42,7 @@
     <!-- Producto Activo? -->
     <div>
         <label class="form-label">Producto Activo?</label>
-        <select class="form-select" aria-label="Default select example" formControlName="activo">
+        <select class="form-control" aria-label="Default select example" formControlName="activo">
             <option [value]="valor.id" *ngFor="let valor of valoresActivo">{{valor.label}}</option>
         </select>
     </div>
@@ -75,7 +75,7 @@
     <!-- Precio Por mayor -->
     <label class="form-label">Precio x Mayor</label>
     <!-- Button trigger modal -->
-    <div class="d-grid gap-2 d-md-flex justify-content-end mx-2 my-2">
+    <div class="text-right mx-2 my-2">
         <button type="button" class="btn btn-success mx-2" (click)="agregarPrecioMayor()">
             Agregar Registro
         </button>
@@ -106,7 +106,7 @@
 </form>
 
 <div class="d-grid gap-2 mt-4">
-    <button type="button" class="btn btn-primary" (click)="guardarProducto()" [disabled]="form.invalid || form.disabled">
+    <button type="button" class="btn btn-primary btn-block" (click)="guardarProducto()" [disabled]="form.invalid || form.disabled">
       <fa-icon [icon]="['fas', 'spinner']" [spin]="true" *ngIf="form.disabled"></fa-icon>
       <span *ngIf="!form.disabled">Guardar</span>
     </button>
