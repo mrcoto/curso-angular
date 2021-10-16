@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiAves: 'https://aves.ninjas.cl/api/birds'
+  apiAves: 'https://aves.ninjas.cl/api/birds',
+  apiStore: 'https://fakestoreapi.com/',
 };
 
 /*

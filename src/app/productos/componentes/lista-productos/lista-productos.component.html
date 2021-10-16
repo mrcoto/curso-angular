@@ -1,0 +1,57 @@
+<!-- Button trigger modal -->
+<div class="d-grid gap-2 d-md-flex justify-content-end mx-2 my-2">
+    <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
+        Crear Producto
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearProductoModalLabel">Crear Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-crear-producto (productoCreado)="cargarProductos()"></app-crear-producto>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="loading; else mostrarProductos">
+    Cargando productos...
+</div>
+<ng-template #mostrarProductos>
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of productos">
+                    <th>{{producto.id}}</th>
+                    <td>
+                        <div style="width: 48px; height: 48px;">
+                            <img [src]="producto.image" width="48px" height="48px">
+                        </div>
+                    </td>
+                    <td>{{producto.title}}</td>
+                    <td>{{producto.category}}</td>
+                    <td>${{producto.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

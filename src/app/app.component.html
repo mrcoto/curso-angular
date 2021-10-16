@@ -1,33 +1,26 @@
-<h1>{{title}}</h1>
+<!-- <h1>{{title}}</h1>
 
-<!-- Modal -->
-<div #miModal class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="ocultarModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="ocultarModal()">Close</button>
-                <button type="button" class="btn btn-primary" (click)="ocultarModal()">Save changes</button>
-            </div>
-        </div>
+<div *ngIf="loading;else noLoading">
+    <p>Loading!</p>
+</div>
+<ng-template #noLoading>
+    <p>NO LOADING!</p>
+</ng-template>
+
+<ng-container *ngIf="loading">
+    <div *ngFor="let numero of numeros">
+        <p>{{numero}}</p>
     </div>
-</div>
+</ng-container>
 
-<div>
-    <button class='btn btn-primary' (click)="mostrarModal()">Mostrar Modal</button>
-    <button class='btn btn-danger' (click)="ocultarModal()">Ocultar Modal</button>
-</div>
+<app-hijo #elHijo [edadHijo]="numero" (onEdadChanged)="edadCambiada($event)"></app-hijo>
 
-<div class="mb-2"></div>
+<p>Edad del Hijo</p>
+<p>{{edadDelHijo}}</p>
+<button (click)="cambiarEdadDelHijo()">Clickear Padre</button> -->
 
-<app-robot #robot *ngIf="contador < detenerHasta" [color]="'blue'" (colorEmitido)="imprimirColor($event)"></app-robot>
+<!-- <app-detalle-producto></app-detalle-producto>
+<app-lista-carros></app-lista-carros>
+<app-lista-usuarios></app-lista-usuarios> -->
 
-<app-lista-aves></app-lista-aves>
+<app-lista-productos></app-lista-productos>

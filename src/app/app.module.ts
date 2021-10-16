@@ -4,25 +4,36 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaAvesComponent } from './componentes/lista-aves/lista-aves.component';
-import { DetalleListaAveComponent } from './componentes/detalle-lista-ave/detalle-lista-ave.component';
-import { CargaDetalleAveComponent } from './componentes/carga-detalle-ave/carga-detalle-ave.component';
-import { RobotComponent } from './componentes/robot/robot.component';
+import { CarrosModule } from './carros/carros.module';
+import { HijoComponent } from './componentes/hijo/hijo.component';
+import { ProductosModule } from './productos/productos.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCoffee, fas, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaAvesComponent,
-    DetalleListaAveComponent,
-    CargaDetalleAveComponent,
-    RobotComponent
+    HijoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ProductosModule,
+    CarrosModule,
+    UsuariosModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+    library.addIcons(faCoffee);
+    library.addIcons(faSpinner);
+  }
+
+}
