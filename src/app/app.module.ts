@@ -1,31 +1,28 @@
+import { APP_ROUTES } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarrosModule } from './carros/carros.module';
-import { HijoComponent } from './componentes/hijo/hijo.component';
-import { ProductosModule } from './productos/productos.module';
-import { UsuariosModule } from './usuarios/usuarios.module';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCoffee, fas, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InicioComponent } from './paginas/inicio/inicio.component';
+import { ContactoComponent } from './paginas/contacto/contacto.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HijoComponent
+    InicioComponent,
+    ContactoComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    ProductosModule,
-    CarrosModule,
-    UsuariosModule,
     FontAwesomeModule,
     NgbModule,
+    RouterModule.forRoot(APP_ROUTES),
   ],
   providers: [],
   bootstrap: [AppComponent]
