@@ -12,20 +12,12 @@
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="'/modulo-usuario/lista-usuario'">Usuarios</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="'/modulo-usuario/productos/lista'">Lista Productos</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="'/modulo-usuario/productos/crear'">Crear Producto</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="javascript:void();" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                  Productos
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                    <li><a class="dropdown-item" [routerLink]="'/modulo-usuario/productos/lista'">Lista Productos</a></li>
-                    <li><a class="dropdown-item" [routerLink]="'/modulo-usuario/productos/crear'">Crear Producto</a></li>
-                </ul>
+            <li ngbDropdown class="d-inline-block">
+                <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Productos</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem [routerLink]="'/modulo-usuario/productos/lista'">Lista Producto</button>
+                    <button ngbDropdownItem [routerLink]="'/modulo-usuario/productos/crear'">Crear Producto</button>
+                </div>
             </li>
         </ul>
     </div>

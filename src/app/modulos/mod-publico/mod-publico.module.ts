@@ -1,3 +1,4 @@
+import { RutModule } from './../../pipes/rut/rut.module';
 import { NavegacionPrincipalModule } from './../../componentes/navegacion-principal/navegacion-principal.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,7 @@ import { MOD_PUBLICO_ROUTES } from './mod-publico.routing';
   imports: [
     CommonModule,
     NavegacionPrincipalModule,
+    RutModule,
     RouterModule.forChild(MOD_PUBLICO_ROUTES)
   ]
 })

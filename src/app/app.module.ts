@@ -1,6 +1,6 @@
 import { APP_ROUTES } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { ContactoComponent } from './paginas/contacto/contacto.component';
 import { RouterModule } from '@angular/router';
+
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es-CL';
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -24,7 +28,7 @@ import { RouterModule } from '@angular/router';
     NgbModule,
     RouterModule.forRoot(APP_ROUTES),
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'es-CL' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,3 +1,4 @@
+import { GuardUserGuard } from './../../guards/guard-user/guard-user.guard';
 import { ModUsuarioComponent } from './mod-usuario.component';
 import { Route } from "@angular/router";
 import { InicioComponent } from './paginas/inicio/inicio.component';
@@ -6,6 +7,7 @@ export const MOD_USUARIO_ROUTES: Route[] = [
   {
     path: '',
     component: ModUsuarioComponent,
+    canActivate: [GuardUserGuard],
     children: [
       {
         path: 'inicio',

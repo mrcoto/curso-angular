@@ -22,6 +22,10 @@ export const MOD_PUBLICO_ROUTES: Route[] = [
         loadChildren: () => import('./paginas/inicio-sesion/inicio-sesion.module').then(m => m.InicioSesionModule)
       },
       {
+        path: '404',
+        loadChildren: () => import('./paginas/error-not-found/error-not-found.module').then(m => m.ErrorNotFoundModule)
+      },
+      {
         path: '**',
         pathMatch: 'full',
         redirectTo: 'inicio'
