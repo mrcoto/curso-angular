@@ -12,6 +12,9 @@ export class RutPipe implements PipeTransform {
       const ultimoDigito = rutSinPuntosNiGuion.substring(rutSinPuntosNiGuion.length - 1);
       const sinUltimoDigito = rutSinPuntosNiGuion.substring(0, rutSinPuntosNiGuion.length - 1);
       
+      if (rutSinPuntosNiGuion.length === 1) {
+        return ultimoDigito;
+      }
       if (formato === 'punto-guion') {
         const sinUltimoDigitoTransformado = (new DecimalPipe('es-CL')).transform(sinUltimoDigito, '1.0-0');
         return sinUltimoDigitoTransformado + '-' + ultimoDigito;

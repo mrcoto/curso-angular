@@ -1,5 +1,4 @@
-import { environment } from './../../../../../environments/environment';
-import { LoginRespuesta } from './../../modelos/login.interface';
+import { LoginService } from './../../../../servicios/login/login.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,7 +16,8 @@ export class InicioSesionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -32,12 +32,12 @@ export class InicioSesionComponent implements OnInit {
       return;
     }
     this.form.disable();
-    this.http.post<LoginRespuesta>(environment.apiStore + 'auth/login', this.form.value).subscribe(respuesta => {
+    this.loginService.login(this.form.value).subscribe(respuesta => {
       this.form.enable();
       // falseado
       console.log(respuesta);
-      localStorage.setItem('usuario', this.form.value.username);
-      localStorage.setItem('token', respuesta.token);
+      // localStorage.setItem('usuario', this.form.value.username);
+      // localStorage.setItem('token', respuesta.token);
       if (this.form.value.username === 'johnd') { // es cliente
         // nos manda al modulo cliente
         this.router.navigate(['/modulo-cliente/inicio']);

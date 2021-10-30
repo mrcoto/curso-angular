@@ -1,3 +1,5 @@
+import { CarroCompraPaginaComponent } from './paginas/carro-compra-pagina/carro-compra-pagina.component';
+import { ClaseCincoComponent } from './paginas/clase-cinco/clase-cinco.component';
 import { ModPublicoComponent } from './mod-publico.component';
 
 import { Route } from "@angular/router";
@@ -16,6 +18,14 @@ export const MOD_PUBLICO_ROUTES: Route[] = [
       {
         path: 'contacto',
         component: ContactoComponent
+      },
+      {
+        path: 'clase-5',
+        component: ClaseCincoComponent
+      },
+      {
+        path: 'carro-compra',
+        component: CarroCompraPaginaComponent
       },
       {
         path: 'inicio-sesion',
