@@ -22,11 +22,13 @@ registerLocaleData(localeEs);
     ContactoComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     FontAwesomeModule,
     NgbModule,
-    RouterModule.forRoot(APP_ROUTES),
+    RouterModule.forRoot(APP_ROUTES, {
+    initialNavigation: 'enabled'
+}),
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'es-CL' } ],
   bootstrap: [AppComponent]
