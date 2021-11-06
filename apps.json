@@ -1,0 +1,12 @@
+// Para usar con pm2
+// pm2 start apps.json
+// pm2 ls
+// pm2 monit
+// pm2 log 0
+// pm2 startup
+{
+    apps: [{
+        name: "curso-angular-ssr",
+        script: "node /var/www/html/dist/curso-angular/server/main.js"
+    }]
+}
